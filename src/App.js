@@ -205,6 +205,7 @@ class App extends Component {
     const { isOpen, filteredNotes, allNotes, filtered } = this.state;
     return (
       <div className="container">
+        <p> This is your NOTELIST</p>
         <button onClick={this.openModal}>Add Note</button>
         <ModalInsertNote
           sendText={this.handleAddNote}

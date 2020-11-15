@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap");
 .App {
   text-align: center;
 }
@@ -35,4 +36,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.modal {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 70%;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  padding: 16px;
+  left: 15%;
+  top: 30%;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
 }

@@ -95,7 +95,7 @@ class AddNote extends Component {
         <MyMapComponent
           saveNoteCordinates={this.handleSaveCordinates}
           isMarkerShown={markerHasDropped}
-          markers={[]}
+          // markers={[]}
           currentLocation={this.state.noteCordinates}
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgEUPi-6e2KZZ-2RfDAMoeMZQ3RHLPM9g&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
@@ -111,10 +111,14 @@ const List = (props) => {
   const theList = props.noteList1.map((x) => (
     <li>
       {" "}
-      {x.text} {x.category}
+      {x.text} {x.category} {x.latitude}
     </li>
   ));
-  return <ul>{theList}</ul>;
+  return (
+    <div>
+      <ul>{theList}</ul>
+    </div>
+  );
 };
 
 const SearchBar = (props) => {
@@ -152,18 +156,13 @@ class App extends Component {
     markers: [
       {
         text: "mdfdjf",
-        lat: 41.112335,
-        lng: 20.084603,
-      },
-      {
-        text: "mdfdjf",
-        lat: 41.1123589,
-        lng: 20.098555,
+        lat: null,
+        lng: null,
       },
     ],
     currentLocation: {
-      lat: 41.325687,
-      lng: 19.820567,
+      lat: null,
+      lng: null,
     },
   };
 

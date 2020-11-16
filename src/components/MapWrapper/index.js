@@ -1,83 +1,76 @@
-/*global google*/
-import React, { Component } from "react";
-import {
-  withGoogleMap,
-  withScriptjs,
-  GoogleMap,
-  DirectionsRenderer,
-  Marker,
-} from "react-google-maps";
-class Map extends Component {
-  state = {
-    directions: null,
+import { Component, useState } from "react";
+import GoogleMapReact from "google-map-react";
+import { GOOGLE_MAPS_API_KEY } from "../../helpers/config";
+
+import "./index.scss";
+
+const Marker = ({ text }) => {
+  const [helpBoxActive, toggleHelpBox] = useState(false);
+  return (
+    <>
+      <div
+        onMouseLeave={() => toggleHelpBox(false)}
+        onMouseEnter={() => toggleHelpBox(true)}
+        className="marker"
+      ></div>
+      {helpBoxActive && text && (
+        <div className="info-box">
+          <p>{text}</p>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default class Map extends Component {
+  static defaultProps = {
+    center: {
+      lat: 41.3309769,
+      lng: 19.7828038,
+    },
+    zoom: 11,
   };
 
-  componentDidMount() {
-    const directionsService = new google.maps.DirectionsService();
+  state = {
+    marker: null,
+  };
 
-    const origin = {
-      lat: this.props.currentLocation.lat,
-      lng: this.props.currentLocation.lng,
-    };
-    const destination = {
-      lat: this.props.destination.lat,
-      lng: this.props.destination.lng,
-    };
-
-    directionsService.route(
-      {
-        origin: origin,
-        destination: destination,
-        travelMode: google.maps.TravelMode.DRIVING,
-      },
-      (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result,
-          });
-        } else {
-          console.error(`error fetching directions ${result}`);
-        }
-      }
-    );
-  }
+  handleMapClick = (e) => {
+    if (this.props.insertMode) {
+      this.setState({
+        marker: { lat: e.lat, lng: e.lng },
+      });
+      this.props.dropMarker({ lat: e.lat, lng: e.lng });
+    }
+  };
 
   render() {
-    const GoogleMapExample = withGoogleMap((props) => (
-      <GoogleMap
-        defaultCenter={{
-          lat: props.currentLocation.lat,
-          lng: props.currentLocation.lng,
-        }}
-        defaultZoom={15}
-      >
-        {props.isMarkerShown && (
-          <Marker
-            position={{
-              lat: props.currentLocation.lat,
-              lng: props.currentLocation.lng,
-            }}
-          />
-        )}
-        {props.markers.map((marker) => (
-          <Marker
-            position={{ lat: marker.lat, lng: marker.lng }}
-            key={marker.id}
-          />
-        ))}
-        <DirectionsRenderer directions={this.state.directions} />
-      </GoogleMap>
-    ));
-
+    console.log(this.props);
     return (
-      <div>
-        <GoogleMapExample
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
+      <div className="map">
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: GOOGLE_MAPS_API_KEY }}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
+          onClick={this.handleMapClick}
+        >
+          {this.state.marker ? (
+            <Marker
+              lat={this.state.marker.lat}
+              lng={this.state.marker.lng}
+              text={this.props.note.input}
+            />
+          ) : null}
+
+          {this.props.customMarker ? (
+            <Marker
+              lat={this.props.customMarker.lat}
+              lng={this.props.customMarker.lng}
+              text={this.props.customMarker.text}
+            />
+          ) : null}
+        </GoogleMapReact>
       </div>
     );
   }
 }
-
-export default Map;

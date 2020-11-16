@@ -38,24 +38,55 @@
   }
 }
 
-.modal {
-  position: fixed;
-  z-index: 500;
-  background-color: white;
+.container {
+  display: flex;
+  flex-direction: row;
+  background: rgb(68, 128, 221);
+  background: linear-gradient(
+    90deg,
+    rgba(68, 128, 221, 1) 0%,
+    rgba(130, 141, 215, 1) 0%,
+    rgba(231, 247, 250, 1) 100%
+  );
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.note {
   width: 70%;
-  border: 1px solid #ccc;
-  box-shadow: 1px 1px 1px black;
-  padding: 16px;
+  background: white;
   left: 15%;
-  top: 30%;
-  box-sizing: border-box;
-  transition: all 0.3s ease-out;
+  position: relative;
 }
 
-.display-block {
-  display: block;
+p {
+  font-size: 40px;
+  font-family: cursive;
+  padding: 0 10%;
 }
 
-.display-none {
-  display: none;
+.button-main {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 100%;
+  position: relative;
+  bottom: 11%;
+  left: 90%;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.no-results {
+  padding: 30px 100px;
+}
+
+.close-details {
+  width: 25px;
+  height: 20px;
+  position: relative;
+  right: 25px;
 }

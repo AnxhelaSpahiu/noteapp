@@ -13,15 +13,15 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div className="Search-Section">
+    <div className="search-section">
       <input
-        className="Input"
+        className="input"
         value={inputSearch}
         onChange={handleChangeSearch}
         placeholder="Type here to start searching"
       />
       <button
-        className="Search-Button"
+        className="search-button"
         disabled={!inputSearch}
         onClick={handleClickSearch}
       >

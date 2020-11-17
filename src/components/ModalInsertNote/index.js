@@ -5,10 +5,15 @@ import "./index.scss";
 const ModalInsertNote = (props) => {
   if (props.modal) {
     return (
-      <div className="modal">
-        <AddNote sendText1={props.sendText} />
-        <button onClick={props.closeModal}>X</button>
-      </div>
+      <>
+        <div className="modal-wrapper"></div>
+        <div className="modal">
+          <button className="close" onClick={props.closeModal}>
+            X
+          </button>
+          <AddNote sendText1={props.sendText} />
+        </div>
+      </>
     );
   }
   return null;

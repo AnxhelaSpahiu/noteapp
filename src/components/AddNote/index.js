@@ -44,21 +44,25 @@ class AddNote extends Component {
 
   render() {
     return (
-      <div>
-        <input value={this.state.input} onChange={this.handleChange} />
-        <label>
+      <div className="add-note">
+        <input
+          className="input"
+          value={this.state.input}
+          onChange={this.handleChange}
+        />
+        <label className="category">
           Pick your category:
           <select
             value={this.state.category}
             onChange={this.handleChangeDropDown}
           >
-            <option value="chores">Chores</option>
-            <option value="coding">Coding</option>
-            <option value="shopping">Shopping</option>
-            <option value="skincare">Skincare</option>
+            <option value="Chores">Chores</option>
+            <option value="Coding">Coding</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Skincare">Skincare</option>
           </select>
         </label>
-        <button className="Button-Add" onClick={this.handleClick}>
+        <button className="button-add" onClick={this.handleClick}>
           Add note
         </button>
         <Map

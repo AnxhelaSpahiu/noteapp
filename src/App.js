@@ -62,6 +62,7 @@ class App extends Component {
       <div className="container">
         <div className="note">
           <p>This is your virtual Notebook</p>
+
           <button className="button-main" onClick={this.openModal}>
             +
           </button>

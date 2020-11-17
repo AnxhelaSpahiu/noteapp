@@ -61,7 +61,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="note">
-          <p>This is your virtual Notebook</p>
+          <p className="welcome">This is your virtual Notebook</p>
 
           <button className="button-main" onClick={this.openModal}>
             +
@@ -93,7 +93,7 @@ class App extends Component {
         </div>
         {this.state.selectedNoteDetails && (
           <>
-            <div className="note-details">
+            <div>
               <NoteDetails note={this.state.selectedNoteDetails} />
             </div>
             {

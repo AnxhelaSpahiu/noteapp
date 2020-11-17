@@ -1,4 +1,7 @@
 .map {
+  > div {
+    min-height: 400px;
+  }
   .marker {
     width: 20px;
     height: 20px;

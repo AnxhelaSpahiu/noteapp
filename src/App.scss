@@ -51,28 +51,27 @@
   position: absolute;
   height: 100%;
   width: 100%;
-}
 
-.note {
-  width: 70%;
-  background: white;
-  left: 15%;
-  position: relative;
+  .note {
+    width: 70%;
+    background: white;
+    left: 15%;
+    position: relative;
+    .button-main {
+      width: 30px;
+      height: 30px;
+
+      border-radius: 100%;
+      position: relative;
+      bottom: 11%;
+      left: 90%;
+    }
+  }
 }
 p {
   font-size: 40px;
   font-family: cursive;
   padding: 0 10%;
-}
-
-.button-main {
-  width: 30px;
-  height: 30px;
-
-  border-radius: 100%;
-  position: relative;
-  bottom: 11%;
-  left: 90%;
 }
 
 .text {

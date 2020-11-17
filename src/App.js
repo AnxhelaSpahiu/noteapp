@@ -71,7 +71,7 @@ class App extends Component {
             modal={isOpen}
             closeModal={this.closeModal}
           />
-          <p class="text">Refind your Previous Notes</p>
+          <p className="text">Refind your Previous Notes</p>
           <SearchBar sendSearchInput={this.handleSearch} />
           {filtered ? (
             filteredNotes.length ? (
